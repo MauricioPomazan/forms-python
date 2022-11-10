@@ -59,15 +59,20 @@ def post_edit(request, pk):
 
 def persona_new(request):
 
+
     nombre = request.POST['nombre']
     apellido = request.POST['apellido']
-    correo = request.POSt['correo']
+    correo = request.POST['correo']
+
 
     persona = Persona()
     persona.nombre = nombre
     persona.apellido = apellido
     persona.correo = correo
     persona.save()
-    return HttpResponse(status=200)
+
+
+    listado_personas = Persona.objects.all()
+    return render(request, 'blog/tabla.html', {'personas': listado_personas})
 
 

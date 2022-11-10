@@ -8,6 +8,9 @@
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
 
@@ -21,13 +24,13 @@
                     <div class="row g-3 needs-validation" novalidate="">
                     <div class="col-md-12">
                       <label for="validationCustom01" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre</font></font></label>
-                      <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre completo" required="">
+                      <input type="text" class="form-control" onkeyup="lettersOnly(this)" id="nombre" placeholder="Ingrese nombre completo" required="">
                       <div class="valid-feedback">
                       </div>
                     </div>
                     <div class="col-md-12">
                       <label for="validationCustom02" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apellido</font></font></label>
-                      <input type="text" class="form-control" id="apellido" placeholder="Apellido" required="">
+                      <input type="text" class="form-control" onkeyup="lettersOnly(this)" id="apellido" placeholder="Apellido" required="">
                       <div class="valid-feedback">
                       </div>
                     </div>
@@ -47,6 +50,24 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div id="contenedorTabla">
+        <table class="table table-striped" style="margin-top: 30px">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Correo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
     </body>
 </html>
 
@@ -66,19 +87,18 @@ function enviarFormulario(){
             datatype: 'json',
             data: {nombre: nombre,
                    apellido: apellido,
-                   corre: correo},
+                   correo: correo},
             statusCode: {
                 200: function (data) {
-                    alert("Salio todo correcto");
+                 $("#contenedorTabla").html(data)
+                 swal("Persona agregada correctamente");
 
                 },
-                500: function () {
-                    //toastr.error(gettext('Server error, contact an administrator.'), ' ', {timeOut: 2000})
-                }
             }
-        });
-
-        
+        });       
 }
-
+function lettersOnly(input) {
+    var regex = /[^a-z ]/gi;
+    input.value = input.value.replace(regex, "");
+}
 </script>
