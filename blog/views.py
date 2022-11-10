@@ -1,6 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
-from .models import Post
+from .models import Persona, Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
@@ -54,5 +55,19 @@ def post_edit(request, pk):
     else:
         form = PostForm(request.POST, instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+def persona_new(request):
+
+    nombre = request.POST['nombre']
+    apellido = request.POST['apellido']
+    correo = request.POSt['correo']
+
+    persona = Persona()
+    persona.nombre = nombre
+    persona.apellido = apellido
+    persona.correo = correo
+    persona.save()
+    return HttpResponse(status=200)
 
 

@@ -1,4 +1,5 @@
 {% load static %}
+
 <html>
     <head>
         <title>Formulario de Validacion</title>
@@ -6,6 +7,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
 
@@ -16,16 +18,16 @@
             </div>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4" style="margin-top: 50px;">
-                    <form class="row g-3 needs-validation" novalidate="">
+                    <div class="row g-3 needs-validation" novalidate="">
                     <div class="col-md-12">
                       <label for="validationCustom01" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre</font></font></label>
-                      <input type="text" class="form-control" id="validationCustom01" value="Ingrese nombre completo" required="">
+                      <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre completo" required="">
                       <div class="valid-feedback">
                       </div>
                     </div>
                     <div class="col-md-12">
                       <label for="validationCustom02" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apellido</font></font></label>
-                      <input type="text" class="form-control" id="validationCustom02" value="Apellido" required="">
+                      <input type="text" class="form-control" id="apellido" placeholder="Apellido" required="">
                       <div class="valid-feedback">
                       </div>
                     </div>
@@ -33,17 +35,50 @@
                       <label for="validationCustomUsername" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Correo electronico</font></font></label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend"></span>
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required="" value="Ejemplo@gmail.com">
+                        <input type="text" class="form-control" id="correo" aria-describedby="inputGroupPrepend" required="" placeholder="Ejemplo@gmail.com">
                         <div class="invalid-feedback">
                         </div>
                         </div>
                     </div>
                     <div class="col-12" >
-                      <button class="btn btn-primary" style="margin-top: 30px; margin-left: 15px;"  type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enviar formulario</font></font></button>
+                      <button class="btn btn-primary" style="margin-top: 30px; margin-left: 15px;" onclick="enviarFormulario()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enviar formulario</font></font></button>
                     </div>
-                  </form>
+                </div>
                 </div>
             </div>
         </div>
     </body>
 </html>
+
+<script>
+
+function enviarFormulario(){
+
+    console.log("hola")
+    let nombre = $('#nombre').val();
+    let apellido = $('#apellido').val();
+    let correo = $('#correo').val();
+
+    $.ajax({
+            url: "{% url 'persona_new' %}",
+            type: 'post',
+            headers: {'X-CSRFToken': '{{ csrf_token }}'},
+            datatype: 'json',
+            data: {nombre: nombre,
+                   apellido: apellido,
+                   corre: correo},
+            statusCode: {
+                200: function (data) {
+                    alert("Salio todo correcto");
+
+                },
+                500: function () {
+                    //toastr.error(gettext('Server error, contact an administrator.'), ' ', {timeOut: 2000})
+                }
+            }
+        });
+
+        
+}
+
+</script>

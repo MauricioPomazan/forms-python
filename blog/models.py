@@ -18,3 +18,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Persona(models.Model):
+    nombre = models.CharField(max_length=200)
+    apellido= models.CharField(max_length=200)
+    correo = models.CharField(max_length=200)
