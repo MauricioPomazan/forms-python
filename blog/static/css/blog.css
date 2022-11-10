@@ -7,7 +7,7 @@ body {
 }
 
 h1 a, h2 a {
-    color: #FCA205;
+    color: #05fc5b;
     font-family: 'Lobster';
 }
 
@@ -24,7 +24,7 @@ h1 a, h2 a {
 }
 
 .content {
-    margin-left: 40px;
+    margin-left: 200px;
 }
 
 h1, h2, h3, h4 {
@@ -51,7 +51,7 @@ h1, h2, h3, h4 {
 }
 
 .post {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 
 .post h2 a, .post h2 a:visited {
