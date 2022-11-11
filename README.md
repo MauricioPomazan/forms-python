@@ -24,15 +24,20 @@ Una ves realizada la instalacion de python (https://www.python.org/downloads/win
 Comprobamos que se alla instalado usando el cmd colocando el comando           "python --version"
 Se recomienda utilizar Visual studio code como editor de codigo.
 
+
+
 Configuramos un entorno virtual y luego instalamos django
 
-$ mkdir djangogirls
+ mkdir djangogirls
 
-$ cd djangogirls
+ cd djangogirls
 
 python -m venv myvenv
 
-con eso creamos el entorno virtual
+Con eso creamos el entorno virtual
+
+
+
 
 Instalacion Django:
 
@@ -40,9 +45,13 @@ Activamos entorno virtual:
 
 myvenv\Scripts\activate
 
-Antes de hacer eso, debemos asegurarnos que tenemos la última versión de pip, el software que utilizamos para instalar Django:
+
+
+Antes de instlar Django, debemos asegurarnos que tenemos la última versión de pip, el software que utilizamos para instalar Django:
 
 python -m pip install --upgrade pip
+
+
 
 Primero crea un archivo requirements.txt dentro de tu directorio djangogirls, usando el editor de código que instalaste previamente,
 Dentro del fichero djangogirls/requirements.txt deberías tener el siguiente texto:
