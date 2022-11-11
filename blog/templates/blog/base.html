@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Formulario de Validacion</title>
+        <title>Formulario de Validacion </title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -12,12 +12,12 @@
         <script src="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
-    <body>
+    <body style="background-color: #a4a9ad;">
 
-        <div class="container-fluid">
+        <div class="container-fluid" >
 
-            <div class="row" style="margin-top: 50px; margin-left: 500px">
-                <h1>Formulario de Validacion</h1>
+            <div class="row" style="margin-top: 50px; margin-left: 600px; ">
+                <h1>Formulario de Validacion y Carga de Personas</h1>
             </div>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4" style="margin-top: 50px;">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2" >
             <div id="contenedorTabla">
         <table class="table table-striped" style="margin-top: 30px">
             <thead>
@@ -91,7 +91,7 @@ function enviarFormulario(){
             statusCode: {
                 200: function (data) {
                  $("#contenedorTabla").html(data)
-                 swal("Persona agregada correctamente");
+                 swal("Persona Cargada", "Haz clik en OK", "success");
 
                 },
             }
