@@ -10,10 +10,10 @@ Una ves cargado el formulario la informacion se vera reflejada en la tabla ubica
 
 Las tecnologias que se utilizaron son:
 
-Python
-Django 
-HTML
-CSS
-Bootstrap
-JavaScrip
+Python,
+Django, 
+HTML,
+CSS,
+Bootstrap,
+JavaScrip.
 
